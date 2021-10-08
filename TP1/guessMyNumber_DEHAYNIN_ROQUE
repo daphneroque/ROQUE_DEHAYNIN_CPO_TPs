@@ -17,7 +17,17 @@ public class TP1 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-Random generateurAleat = new Random();
+int operateur;
+        int operande1;
+        int operande2;
+        float resultat=0;
+        Scanner sc;
+        sc = new Scanner(System.in);
+        System.out.println("Please enter the operator: \n1) add \n2) substract\n3) multiply\n4) divide\n5) modulo");
+        System.out.println("Please enter int number:"); 
+        operateur = sc.nextInt();
+        if(operateur>5 )
+           
 
     }
     
