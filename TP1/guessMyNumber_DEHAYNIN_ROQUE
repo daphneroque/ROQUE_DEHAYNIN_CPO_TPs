@@ -1,0 +1,34 @@
+/*TP1 exercice 3- Daphné ROQUE JAde DEHAYNIN
+
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package tp1;
+
+/**
+ *
+ * @author daphn
+ */
+public class TP1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+
+int operateur;
+        int operande1;
+        int operande2;
+        float resultat=0;
+        Scanner sc;
+        sc = new Scanner(System.in);
+        System.out.println("Please enter the operator: \n1) add \n2) substract\n3) multiply\n4) divide\n5) modulo");
+        System.out.println("Please enter int number:"); 
+        operateur = sc.nextInt();
+        if(operateur>5 )
+           
+
+    }
+    
+}
