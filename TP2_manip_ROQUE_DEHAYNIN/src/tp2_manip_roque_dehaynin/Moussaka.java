@@ -11,10 +11,15 @@ package tp2_manip_roque_dehaynin;
 public class Moussaka {
     int nbCalories;
         
-    public Moussaka () {
-           int nbCalories;
+    public Moussaka (int nb) {
+           int nbCalories=nb;
 }
+@Override
+  public String toString() {
+      return String.valueOf(nbCalories);
+  }
     
+ 
 }
  
     
