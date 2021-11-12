@@ -8,17 +8,16 @@ package sp4_console_roque_dehaynin;
  *
  * @author daphn
  */
-public class Jeton {
-    String Couleur;
-
-    public void Jeton(String color) {
-    Couleur = color;
+public class Cellule {
+    Jeton jetonCourant;
+    
+    public void Cellule(){
+        jetonCourant=null;
     }
     
-    public String lireCouleur(){
+    public boolean affecterJeton(Jeton n){
         
-        return Couleur;    
     }
+    
 }
-
 
