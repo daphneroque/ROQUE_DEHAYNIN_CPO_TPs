@@ -28,6 +28,7 @@ public class Joueur {
    public void  ajouterJeton(Jeton pion){
        ListeJetons = new Jeton[1];
        ListeJetons[ListeJetons.length - 1] = pion; 
+       nombreJetonsRestants = 21-ListeJetons.length - 1;
    }
    
    }
