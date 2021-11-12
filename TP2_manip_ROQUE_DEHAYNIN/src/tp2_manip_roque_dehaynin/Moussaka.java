@@ -9,5 +9,14 @@ package tp2_manip_roque_dehaynin;
  * @author Jade
  */
 public class Moussaka {
+    int nbCalories;
+        
+    public Moussaka () {
+           int nbCalories;
+}
     
 }
+ 
+    
+    
+
