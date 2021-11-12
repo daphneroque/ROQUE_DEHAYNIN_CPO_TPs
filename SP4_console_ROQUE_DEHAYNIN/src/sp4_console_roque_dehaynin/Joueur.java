@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sp4_console_roque_dehaynin;
+
 import java.util.Random;
 
 /**
@@ -10,32 +11,38 @@ import java.util.Random;
  * @author daphn
  */
 public class Joueur {
+
     String Nom;
     String Couleur;
-    Jeton [] ListeJetons;
-    int nombreJetonsRestants ; 
-    
-    public void Joueur(String c){
-        Nom=c;
+    Jeton[] ListeJetons = new Jeton[21];
+    int nombreJetonsRestants;
+
+    public void Joueur(String c) {
+        Nom = c;
     }
-        
-    
-    public void affecterCouleur(String coul){
-       Couleur=coul;
-        
+
+    public void affecterCouleur(String coul) {
+        Couleur = coul;
+
     }
- 
-   public void  ajouterJeton(Jeton pion){
-       ListeJetons = new Jeton[1];
-       ListeJetons[ListeJetons.length - 1] = pion; 
-       nombreJetonsRestants = 21-ListeJetons.length - 1;
-   }
-   
-   }
-  
 
-     
-             
+    public boolean ajouterJeton(Jeton pion) {
+        int i = 0;
+        while (i < ListeJetons.length) {
+            if (ListeJetons[i] == null) {
+                ListeJetons[i] = pion;
+                return true;
+            }
+            if (ListeJetons[i] != null) {
+                i++;
+            }
+            if (i == 21) {
+                return false;
 
-        
+            }
 
+        }
+        return true;
+    }
+
+}
