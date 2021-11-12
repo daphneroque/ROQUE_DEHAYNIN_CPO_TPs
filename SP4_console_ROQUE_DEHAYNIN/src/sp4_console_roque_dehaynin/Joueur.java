@@ -12,18 +12,29 @@ import java.util.Random;
 public class Joueur {
     String Nom;
     String Couleur;
-    Jeton [] ListeJetons = new Jeton [21];
+    Jeton [] ListeJetons;
     int nombreJetonsRestants ; 
     
-    public void Joueur(){
-        System.out.println("Nom du joueur : "+ Nom);
+    public void Joueur(String c){
+        Nom=c;
     }
-    public void affecterCouleur(){
-        String [] tab = {"jaune","rouge"};
-        Random ran = new Random();
-        String tab_ran = tab[ran.nextInt(tab.length)];
+        
+    
+    public void affecterCouleur(String coul){
+       Couleur=coul;
+        
     }
-            
+ 
+   public void  ajouterJeton(Jeton pion){
+       ListeJetons = new Jeton[1];
+       ListeJetons[ListeJetons.length - 1] = pion; 
+   }
+   
+   }
   
-}
+
+     
+             
+
+        
 
