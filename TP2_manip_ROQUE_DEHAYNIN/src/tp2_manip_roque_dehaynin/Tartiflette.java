@@ -11,8 +11,8 @@ package tp2_manip_roque_dehaynin;
 public class Tartiflette {
     int nbCalories;
         
-    public Tartiflette () {
-           int nbCalories;
+    public Tartiflette (int nb) {
+           int nbCalories=nb ;
 }
     
 }
