@@ -9,5 +9,17 @@ package sp4_console_roque_dehaynin;
  * @author daphn
  */
 public class Jeton {
+    String Couleur;
+
+    public void Jeton(String color) {
+    Couleur = color;
+    }
     
+    public String lireCouleur(){
+        String couleur_a_retourner;
+        couleur_a_retourner=Couleur;
+        return couleur_a_retourner;    
+    }
 }
+
+
