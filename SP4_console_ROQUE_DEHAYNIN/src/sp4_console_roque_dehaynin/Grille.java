@@ -71,7 +71,9 @@ public class Grille {
         }
     }
     
-   
+   public boolean celluleOccupee (int ligne ,int colonne){
+       
+   }
     
         
         
