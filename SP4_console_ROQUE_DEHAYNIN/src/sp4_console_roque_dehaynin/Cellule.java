@@ -4,6 +4,7 @@
  */
 package sp4_console_roque_dehaynin;
 
+
 /**
  *
  * @author daphn
@@ -16,8 +17,30 @@ public class Cellule {
     }
     
     public boolean affecterJeton(Jeton n){
-        
+        if (jetonCourant==null){
+            jetonCourant=n;
+            return true;
+       
+        }
+        else {
+            return false;
+        }    
     }
     
+   public String lireCouleurDuJeton (){
+       if (jetonCourant==null){
+           return "vide";
+       }
+       else {
+           return jetonCourant.Couleur;
+       }
+   }
 }
+
+       
+
+
+           
+
+   
 
