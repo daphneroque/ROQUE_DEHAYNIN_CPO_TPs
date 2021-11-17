@@ -181,23 +181,11 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
   
 
 boolean colonneRemplie (int colonne){
-    boolean MaGrille2=true;
-    for (int i=0; i<6; i++){
-        if (CellulesJeu[i][colonne]==null){
-            MaGrille2=false;
-            return MaGrille2;
-            
-            
-        }
-        else {
-            return MaGrille2;
-        }
-        
-    }
-  return true;  
+        return CellulesJeu[5][colonne].jetonCourant!=null;  
+}
 }
         
-}
+
    
 
     
