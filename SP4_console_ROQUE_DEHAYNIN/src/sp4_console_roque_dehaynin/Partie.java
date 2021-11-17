@@ -4,6 +4,8 @@
  */
 package sp4_console_roque_dehaynin;
 
+import java.util.Random;
+
 /**
  *
  * @author daphn
@@ -14,16 +16,52 @@ public class Partie {
     Grille grilleJeu;
     
     
-    public void Partie(Joueur j1, Joueur j2){
-        ListeJoueurs[1]=j1;
-        ListeJoueurs[2]=j2;
+    public Partie(Joueur j1, Joueur j2){
+        ListeJoueurs[0]=j1;
+        ListeJoueurs[1]=j2;
         
     }
     
-    public void initialiserPartie (){
-        grilleJeu.Grille();
-        joueurCourant.
+    public void attribuerCouleursauxJouers(){
+        
+        
+        String [] tab = {"jaune","rouge"}; // affecter un jeton de couleur aléatoirement pour chaque joueur entre jaune et rouge
+        Random ran = new Random();
+        String tab_ran = tab[ran.nextInt(tab.length)];
+        if(tab_ran == "jaune"){
+            ListeJoueurs[0].affecterCouleur("jaune");
+            ListeJoueurs[1].affecterCouleur("rouge");
+               
+        }
+        else
+             ListeJoueurs[0].affecterCouleur("rouge");
+            ListeJoueurs[1].affecterCouleur("jaune");
+
+        
+        
         
     }
+    public void initialiserPartie (){
+        grilleJeu = new Grille();
+        for(int i =1;i<22;i++){
+            Jeton J1 = new Jeton(ListeJoueurs[0].Couleur);
+            ListeJoueurs[0].ajouterJeton(J1);
+            Jeton J2 = new Jeton(ListeJoueurs[1].Couleur);
+            ListeJoueurs[1].ajouterJeton(J2);
+            
+        }
+        
+        
+        
+        
+                
+                
+    
+      
+    }
+    
+   
+        
+    
     
 }
