@@ -5,6 +5,7 @@
 package sp4_console_roque_dehaynin;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -50,14 +51,21 @@ public class Partie {
             ListeJoueurs[1].ajouterJeton(J2);
             
         }
+    }
+    public void debuterPartie(){
+        joueurCourant=ListeJoueurs[0];
+        while(grilleJeu.etreRemplie()==false || grilleJeu.etreGagnantePourJoueur(joueurCourant)==false){
+            grilleJeu.afficherGrilleSurConsole();
+            
+            System.out.println("C'est à vous de jouer, entrez une colonne entre 0 et 6");
+            //utiliser scanner pour que l'utilisateur puisse rentrer sa colonne
+            // il faudra aller chercher le jeton dans la liste de jetons
+            
+            
+            grilleJeu.ajouterJetonDansColonne(jet, 0);
+            
+        }
         
-        
-        
-        
-                
-                
-    
-      
     }
     
    
