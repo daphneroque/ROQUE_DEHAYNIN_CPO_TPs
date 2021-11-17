@@ -9,5 +9,8 @@ package sp4_console_roque_dehaynin;
  * @author daphn
  */
 public class Partie {
+    Joueur[] ListeJoueurs =new Joueur [2];
+    Joueur joueurCourant;
+    Grille
     
 }
