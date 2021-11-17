@@ -179,6 +179,24 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
         return false;
     }
   
+
+boolean colonneRemplie (int colonne){
+    boolean MaGrille2=true;
+    for (int i=0; i<6; i++){
+        if (CellulesJeu[i][colonne]==null){
+            MaGrille2=false;
+            return MaGrille2;
+            
+            
+        }
+        else {
+            return MaGrille2;
+        }
+        
+    }
+  return true;  
+}
+        
 }
    
 
