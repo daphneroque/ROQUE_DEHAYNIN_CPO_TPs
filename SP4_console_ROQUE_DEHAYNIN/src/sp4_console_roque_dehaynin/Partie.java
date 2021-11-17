@@ -11,6 +11,19 @@ package sp4_console_roque_dehaynin;
 public class Partie {
     Joueur[] ListeJoueurs =new Joueur [2];
     Joueur joueurCourant;
-    Grille
+    Grille grilleJeu;
+    
+    
+    public void Partie(Joueur j1, Joueur j2){
+        ListeJoueurs[1]=j1;
+        ListeJoueurs[2]=j2;
+        
+    }
+    
+    public void initialiserPartie (){
+        grilleJeu.Grille();
+        joueurCourant.
+        
+    }
     
 }
