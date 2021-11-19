@@ -57,19 +57,35 @@ public class Partie {
         while(grilleJeu.etreRemplie()==false || grilleJeu.etreGagnantePourJoueur(joueurCourant)==false){
             grilleJeu.afficherGrilleSurConsole();
             
+            Scanner sc = new Scanner(System.in);
             System.out.println("C'est à vous de jouer, entrez une colonne entre 0 et 6");
+            int saisieUtilisateur = sc.nextInt();
             //utiliser scanner pour que l'utilisateur puisse rentrer sa colonne
-            // il faudra aller chercher le jeton dans la liste de jetons
+            while (saisieUtilisateur>6 || saisieUtilisateur<0){
+                System.out.println("Erreur ! Votre saisie de colonne n'est pas entre 0 et 6");
+            }
             
             
-            grilleJeu.ajouterJetonDansColonne(jet, 0);
-            
+                if (grilleJeu.etreRemplie()==true){
+                    System.out.println("Erreur! vous devez saisir un numéro de colonne qui a une grille pas remlie ");
+                    
+                }
+                if (grilleJeu.etreRemplie()==false){
+                    Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
+                    joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
+                    joueurCourant.nombreJetonsRestants--; //j'ai recupere le jeton de ma liste
+                    grilleJeu.ajouterJetonDansColonne(j, saisieUtilisateur);
+                    System.out.println("Votre jeton a bien été ajouté");
+                    
+                }
+                if (joueurCourant==ListeJoueurs[1]){
+                    joueurCourant=ListeJoueurs[0];
+                    }
+                else{
+                    joueurCourant=ListeJoueurs[1];
+                }    
         }
         
     }
-    
-   
-        
-    
     
 }
