@@ -12,7 +12,7 @@ package sp4_console_roque_dehaynin;
 public class Cellule {
     Jeton jetonCourant;
     
-    public void Cellule(){
+    public Cellule(){
         jetonCourant=null;
     }
     

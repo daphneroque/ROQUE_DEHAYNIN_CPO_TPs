@@ -17,7 +17,7 @@ public class Joueur {
     Jeton[] ListeJetons = new Jeton[21];
     int nombreJetonsRestants;
 
-    public void Joueur(String c) {
+    public Joueur(String c) {
         Nom = c;
     }
 
