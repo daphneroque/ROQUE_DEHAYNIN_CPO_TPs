@@ -104,6 +104,7 @@ public class Cellule {
    
    public boolean activerTrouNoir(){
        if (presenceTrouNoir()==true){
+           supprimerJeton();
            trouNoir= false;
            return true; 
        }
