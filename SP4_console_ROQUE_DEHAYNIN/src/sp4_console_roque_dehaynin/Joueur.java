@@ -16,6 +16,7 @@ public class Joueur {
     String Couleur;
     Jeton[] ListeJetons = new Jeton[21];
     int nombreJetonsRestants;
+    int  nombreDesintegrateurs;
 
     public Joueur(String c) {
         Nom = c;
@@ -44,5 +45,24 @@ public class Joueur {
         }
         return true;
     }
+    
+    
+    public void obtenirDesintegrateur(){
+        nombreDesintegrateurs = nombreDesintegrateurs +1;
+   
+    }
+    
+    public boolean utiliserDesintegrateur(){
+        if (nombreDesintegrateurs<0){
+            nombreDesintegrateurs=nombreDesintegrateurs-1;
+            return true;
+   
+        }
+        else {
+            return false;
+        }
+
+    }
+    
 
 }
