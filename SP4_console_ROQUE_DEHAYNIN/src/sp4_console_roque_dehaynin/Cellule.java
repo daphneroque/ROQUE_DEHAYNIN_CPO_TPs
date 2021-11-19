@@ -11,6 +11,8 @@ package sp4_console_roque_dehaynin;
  */
 public class Cellule {
     Jeton jetonCourant;
+    boolean trouNoir;
+    boolean Desintegrateur;
     
     public Cellule(){
         jetonCourant=null;
@@ -33,6 +35,80 @@ public class Cellule {
        }
        else {
            return jetonCourant.Couleur;
+       }
+   }
+   
+   public Jeton recupererJetons(){
+       return jetonCourant;
+   }
+   
+   boolean supprimerJeton(){
+       if (jetonCourant!=null){
+           jetonCourant = null;
+           return true;
+       }
+       else {
+           return false;
+       }
+   }
+   
+   public boolean placerTrouNoir(){
+       if (trouNoir==false){  //je regarde si 
+           trouNoir= true;
+           return trouNoir;
+       }
+       else{
+           return false;
+       }
+      
+   }
+   
+   public boolean placerDesintegrateurs(){
+       if (Desintegrateur==false){
+           Desintegrateur=true;
+           return Desintegrateur;
+       }
+       else{
+           return false;
+       }
+   }
+   
+   public boolean presenceTrouNoir(){
+       if (trouNoir==true){
+           return true;
+       }
+       else{
+           return false;
+       } 
+   }
+   
+   public boolean presenceDesintegrateur(){
+       if (Desintegrateur==true){
+           return true;
+       }
+       else{
+           return false;
+       }
+   }
+   
+   public boolean recupererDesintegrateur(){
+       if (presenceDesintegrateur()==true){
+           jetonCourant = null;
+           return true;
+       }
+       else{
+           return false;
+       }
+           
+       }
+   
+   public boolean activerTrouNoir(){
+       if (presenceTrouNoir()==true){
+           trouNoir= false;
+           return true; 
+       }
+       else{
+           return false;
        }
    }
 }
