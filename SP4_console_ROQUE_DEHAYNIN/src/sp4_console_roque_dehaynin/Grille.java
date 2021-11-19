@@ -52,7 +52,7 @@ public class Grille {
     }
     
     public void afficherGrilleSurConsole(){
-        for (int i=0; i<6; i++){
+        for (int i=5; i>=0; i--){ // comme la grille affiche la premiere ligne, et que la ligne du haut est 5, on doit changer le sens pour l'affichage
             for (int j=0; j<7; j++){
                 if (CellulesJeu[i][j].lireCouleurDuJeton()== "vide"){
                     System.out.print("0");

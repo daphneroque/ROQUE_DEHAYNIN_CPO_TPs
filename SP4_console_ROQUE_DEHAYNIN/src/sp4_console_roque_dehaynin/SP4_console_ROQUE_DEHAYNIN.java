@@ -16,14 +16,14 @@ public class SP4_console_ROQUE_DEHAYNIN {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Jeton j = new Jeton("rouge");
+        Jeton j = new Jeton("Rouge");
         System.out.println(j.lireCouleur());
         Cellule c = new Cellule ();
         System.out.println(c.lireCouleurDuJeton());//affiche vide
         c.affecterJeton(j);
         System.out.println(c.lireCouleurDuJeton()); //affiche rouge
         Grille G = new Grille();
-        G.ajouterJetonDansColonne(j,5);
+          G.ajouterJetonDansColonne(j,5);
         G.afficherGrilleSurConsole();
     }   
 }
