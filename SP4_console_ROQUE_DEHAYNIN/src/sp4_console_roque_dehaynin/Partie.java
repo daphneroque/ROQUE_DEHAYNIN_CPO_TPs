@@ -61,23 +61,24 @@ public class Partie {
             System.out.println("C'est à vous de jouer, entrez une colonne entre 0 et 6");
             int saisieUtilisateur = sc.nextInt();
             //utiliser scanner pour que l'utilisateur puisse rentrer sa colonne
-            while (saisieUtilisateur>6 || saisieUtilisateur<0){
+            while (saisieUtilisateur>6){
                 System.out.println("Erreur ! Votre saisie de colonne n'est pas entre 0 et 6");
             }
             
             
-                if (grilleJeu.etreRemplie()==true){
+                while (grilleJeu.etreRemplie()==true){
                     System.out.println("Erreur! vous devez saisir un numéro de colonne qui a une grille pas remlie ");
+                    saisieUtilisateur = sc.nextInt();
                     
                 }
-                if (grilleJeu.etreRemplie()==false){
+
                     Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
                     joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
                     joueurCourant.nombreJetonsRestants--; //j'ai recupere le jeton de ma liste
                     grilleJeu.ajouterJetonDansColonne(j, saisieUtilisateur);
                     System.out.println("Votre jeton a bien été ajouté");
                     
-                }
+                
                 if (joueurCourant==ListeJoueurs[1]){
                     joueurCourant=ListeJoueurs[0];
                     }
