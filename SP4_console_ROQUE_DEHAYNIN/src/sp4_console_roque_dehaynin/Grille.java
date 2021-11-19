@@ -183,7 +183,55 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
 boolean colonneRemplie (int colonne){
         return CellulesJeu[5][colonne].jetonCourant!=null;  
 }
+
+public void tasserGrille (int ligne, int colone){
+    for(int i=0; i<ligne; i++ ){
+    CellulesJeu[i+1][colone].jetonCourant=CellulesJeu[i][colone].jetonCourant;
+        
+    }
+    
 }
+
+public boolean placerTrouNoir(int ligne , int colone ){ //demander au prof si ça fonctionne
+    
+    if (CellulesJeu[ligne][colone].trouNoir==false){
+       CellulesJeu[ligne][colone].trouNoir=true;
+       return true;
+    }
+    else{
+        return false;
+    }
+}
+
+public boolean placerDesintegrateur(int ligne, int colone){
+     if (CellulesJeu[ligne][colone].Desintegrateur==false){
+       CellulesJeu[ligne][colone].Desintegrateur=true;
+       return true;
+    }
+    else{
+        return false;
+    }  
+}
+
+public boolean supprimerJeton(int ligne, int colone){
+    if (CellulesJeu[ligne][colone]!=null){
+           CellulesJeu[ligne][colone] = null;
+           return true;
+       }
+       else {
+           return false;
+       }
+   }
+
+public Jeton recupererJeton(int ligne, int colone){
+    Jeton recuperationJeton =  CellulesJeu[ligne][colone].jetonCourant;
+    CellulesJeu[ligne][colone].supprimerJeton();
+    return recuperationJeton;           
+}
+}
+
+
+
         
 
    
