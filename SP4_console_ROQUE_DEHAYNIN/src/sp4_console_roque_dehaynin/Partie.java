@@ -58,11 +58,23 @@ public class Partie {
                     if (grilleJeu.placerDesintegrateur(ligne_trou_noir, colonne_trou_noir)){
                         compteur--;
                     }
-                    compteur=compteur+1:
+                    compteur = compteur + 1;
                 }
-                
+                if (grilleJeu.placerTrouNoir(ligne_trou_noir, colonne_trou_noir)){
+                    j--;      
+                }
+            
+                for (int k=0;i<3; i++){
+                    int ligne_desintegrateur = r.nextInt(6);
+                    int colonne_desintegrateur = r.nextInt(7);
+                    if ( grilleJeu.placerTrouNoir(ligne_desintegrateur, colonne_desintegrateur)){
+                        
+                        
+                        
                         
                     }
+                    
+                    
                 }
             }
             
@@ -82,11 +94,11 @@ public class Partie {
             }
             
             
-                while (grilleJeu.etreRemplie()==true){
-                    System.out.println("Erreur! vous devez saisir un numéro de colonne qui a une grille pas remlie ");
+                 While (grilleJeu.etreRemplie()==true){
+                
+                    System.out.println("Erreur! vous devez saisir un numéro de colonne qui a une grille pas remplie ");
                     saisieUtilisateur = sc.nextInt();
-                    
-                }
+            }
 
                     Jeton j = joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1];
                     joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1]=null;
@@ -103,6 +115,10 @@ public class Partie {
                 }    
         }
         
+    }
+
+    private void While(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
