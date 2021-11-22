@@ -49,6 +49,22 @@ public class Partie {
             ListeJoueurs[0].ajouterJeton(J1);
             Jeton J2 = new Jeton(ListeJoueurs[1].Couleur);
             ListeJoueurs[1].ajouterJeton(J2);
+            Random r = new Random();
+            int compteur=0;
+            for (int j = 0; j<5 ; j++){
+                int ligne_trou_noir = r.nextInt(6);
+                int colonne_trou_noir = r.nextInt(7);
+                if ( compteur<2){
+                    if (grilleJeu.placerDesintegrateur(ligne_trou_noir, colonne_trou_noir)){
+                        compteur--;
+                    }
+                    compteur=compteur+1:
+                }
+                
+                        
+                    }
+                }
+            }
             
         }
     }

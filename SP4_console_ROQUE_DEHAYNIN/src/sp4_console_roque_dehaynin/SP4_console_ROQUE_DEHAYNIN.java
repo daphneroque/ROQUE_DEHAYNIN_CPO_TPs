@@ -16,14 +16,22 @@ public class SP4_console_ROQUE_DEHAYNIN {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Jeton j = new Jeton("Rouge");
-        System.out.println(j.lireCouleur());
-        Cellule c = new Cellule ();
-        System.out.println(c.lireCouleurDuJeton());//affiche vide
-        c.affecterJeton(j);
-        System.out.println(c.lireCouleurDuJeton()); //affiche rouge
-        Grille G = new Grille();
-          G.ajouterJetonDansColonne(j,1);
-        G.afficherGrilleSurConsole();
+        //Jeton j = new Jeton("Rouge");
+       // System.out.println(j.lireCouleur());
+        //Cellule c = new Cellule ();
+        //System.out.println(c.lireCouleurDuJeton());//affiche vide
+        //c.affecterJeton(j);
+        //System.out.println(c.lireCouleurDuJeton()); //affiche rouge
+        //Grille G = new Grille();
+         // G.ajouterJetonDansColonne(j,1);
+       // G.afficherGrilleSurConsole();
+        
+        Partie partie1 = new Partie(new Joueur("e"), new Joueur("f"));
+        partie1.initialiserPartie();
+        partie1.debuterPartie();
+        
+        
+        
+        
     }   
 }
