@@ -187,7 +187,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
   
 
 boolean colonneRemplie (int colonne){
-        return CellulesJeu[5][colonne].jetonCourant!=null;  
+        return CellulesJeu[5][colonne].jetonCourant!=null ;  
 }
 
 public void tasserGrille (int ligne, int colone){
