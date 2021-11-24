@@ -27,8 +27,9 @@ public class SP4_console_ROQUE_DEHAYNIN {
        // G.afficherGrilleSurConsole();
         
         Partie partie1 = new Partie(new Joueur("e"), new Joueur("f"));
-        partie1.initialiserPartie();
+        //partie1.initialiserPartie();
         partie1.debuterPartie();
+        
         
         
         
