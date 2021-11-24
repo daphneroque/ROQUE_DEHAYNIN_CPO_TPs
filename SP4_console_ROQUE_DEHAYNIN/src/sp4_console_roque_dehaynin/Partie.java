@@ -23,39 +23,38 @@ public class Partie {
         
     }
     
-    public void attribuerCouleursAuxJouers(){
-        
-        
-        String [] tab = {"jaune","rouge"}; // affecter un jeton de couleur aléatoirement pour chaque joueur entre jaune et rouge
-        Random ran = new Random();
-        String tab_ran = tab[ran.nextInt(tab.length)];
-        if(tab_ran == "jaune"){
-            ListeJoueurs[0].affecterCouleur("jaune");
-            ListeJoueurs[1].affecterCouleur("rouge");
-               
-        }
-        else
-             ListeJoueurs[0].affecterCouleur("rouge");
-            ListeJoueurs[1].affecterCouleur("jaune");
+  public void attribuerCouleursAuxJoueurs(){
+    double nbalea=Math.random();
+    if (nbalea>0.5) {
+        ListeJoueurs[0].affecterCouleur("rouge");
+        ListeJoueurs[1].affecterCouleur("jaune");
+        System.out.println(ListeJoueurs[0]+" a la couleur ROUGE");
+        System.out.println(ListeJoueurs[1]+" a la couleur JAUNE");
+    }else{
+        ListeJoueurs[0].affecterCouleur("jaune");
+        ListeJoueurs[1].affecterCouleur("rouge");
+        System.out.println(ListeJoueurs[1]+" a la couleur ROUGE");
+        System.out.println(ListeJoueurs[0]+" a la couleur JAUNE");
+    }
 
         
         
         
     }
   public void initialiserPartie(){
-    //Création de la grille
-    Grille grille= new Grille();
-    grille.viderGrille();
+    //Création de la grilleJeu
+    grilleJeu= new Grille();
+    grilleJeu.viderGrille();
     int nbTN=0;
     while (nbTN<=5){
         int ligne=(int)(Math.random() * 6);
         int colone=(int)(Math.random() * 7);
-        if (grille.CellulesJeu[ligne][colone]==null){
+        if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant==null){
             if (nbTN==4 || nbTN==5){
-                grille.placerTrouNoir(ligne,colone);
-                grille.placerDesintegrateur(ligne,colone);
+                grilleJeu.placerTrouNoir(ligne,colone);
+                grilleJeu.placerDesintegrateur(ligne,colone);
             }else{
-                grille.placerTrouNoir(ligne,colone);
+                grilleJeu.placerTrouNoir(ligne,colone);
             }
             nbTN+=1;
         }else{
@@ -66,8 +65,8 @@ public class Partie {
     while (nbDesint<=3){
         int ligne=(int)(Math.random() * 6);
         int colone=(int)(Math.random() * 7);
-        if (grille.CellulesJeu[ligne][colone]==null){
-            grille.placerDesintegrateur(ligne,colone);
+        if (grilleJeu.CellulesJeu[ligne][colone].presenceDesintegrateur()==false){
+            grilleJeu.placerDesintegrateur(ligne,colone);
             nbDesint+=1;
         }else{
                 nbDesint=nbDesint;
@@ -110,11 +109,10 @@ public void debuterPartie(){
     }
     
     //Distribution des couleurs:
-    attribuerCouleursAuxJouers();
-
+    attribuerCouleursAuxJoueurs();
     initialiserPartie();
     while((grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])!=true) && (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])!=true) && (grilleJeu.etreRemplie()!=true)){
-        //afficher la grille
+        //afficher la grilleJeu
         grilleJeu.afficherGrilleSurConsole();
         
         //demander au joueur ce qu'il veut faire
@@ -144,7 +142,7 @@ public void debuterPartie(){
         
         
         if (saisie==2){
-            //récupérer un jeton de la grille de jeu
+            //récupérer un jeton de la grilleJeu de jeu
             Scanner s = new Scanner(System.in);
             System.out.println("Sélectionnez les coordonnéesdu jeton:");
             System.out.println("Sélectionnez un numéro de ligne:");
