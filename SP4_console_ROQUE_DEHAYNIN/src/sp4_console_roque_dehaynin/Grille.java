@@ -57,17 +57,19 @@ public class Grille {
                 if (CellulesJeu[i][j].lireCouleurDuJeton()== "vide"){
                     System.out.print("_ ");
                 }
-                if (CellulesJeu[i][j].lireCouleurDuJeton()== "Rouge"){ 
+                if (CellulesJeu[i][j].lireCouleurDuJeton()== "rouge"){ 
                     System.out.print("R");
-                    
                 }
-                if (CellulesJeu[i][j].lireCouleurDuJeton()== "Jaune"){ 
+                
+                if (CellulesJeu[i][j].lireCouleurDuJeton()== "jaune"){ 
                     System.out.print("J");
                     
                 }
+            
             }
               System.out.println();          
              
+            
         }
     }
     
@@ -96,6 +98,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
 
         for (int i=0; i<6; i++) { 
             for (int j=0; j<4; j++){  
+            Compt=0;
             String CouleurCase = lireCouleurDuJeton(i,j);
                 if (CouleurCase == CouleurGagnante){ 
                     int k =j;
@@ -112,7 +115,8 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
         }
 
         for (int i=0; i<3; i++) { 
-            for (int j=0; j<7; j++){  
+            for (int j=0; j<7; j++){ 
+                Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
                 if (Couleurcellule == CouleurGagnante){ 
                     int k =i;
@@ -132,6 +136,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
         
         for (int i=0; i<3; i++) { 
             for (int j=0; j<4; j++){  
+                Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
                 if (Couleurcellule == CouleurGagnante){
                     int k =i;
@@ -157,6 +162,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){
         
         for (int i=3; i<6; i++) { 
             for (int j=0; j<4; j++){  
+                Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
                 if (Couleurcellule == CouleurGagnante){ 
                     int k =i;
@@ -187,7 +193,7 @@ boolean colonneRemplie (int colonne){
 public void tasserGrille (int ligne, int colone){
     for(int i=0; i<ligne; i++ ){
     CellulesJeu[i+1][colone].jetonCourant=CellulesJeu[i][colone].jetonCourant;
-        
+        CellulesJeu[i][colone].jetonCourant = null;
     }
     
 }
