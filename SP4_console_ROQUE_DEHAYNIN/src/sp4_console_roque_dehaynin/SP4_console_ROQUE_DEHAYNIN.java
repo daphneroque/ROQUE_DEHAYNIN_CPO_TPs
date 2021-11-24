@@ -23,7 +23,7 @@ public class SP4_console_ROQUE_DEHAYNIN {
         //c.affecterJeton(j);
         //System.out.println(c.lireCouleurDuJeton()); //affiche rouge
         //Grille G = new Grille();
-         // G.ajouterJetonDansColonne(j,1);
+         // G.ajouterJetosfnDansColonne(j,1);
        // G.afficherGrilleSurConsole();
         
         Partie partie1 = new Partie(new Joueur("e"), new Joueur("f"));
