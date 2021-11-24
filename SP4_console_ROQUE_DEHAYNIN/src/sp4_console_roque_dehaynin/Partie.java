@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Partie {
 
     Joueur[] ListeJoueurs = new Joueur[2];
-    Joueur joueurCourant;
+    Joueur joueurCourant ;
     Grille grilleJeu;
 
     public Partie(Joueur j1, Joueur j2) {
