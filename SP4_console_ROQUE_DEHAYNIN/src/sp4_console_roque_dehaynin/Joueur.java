@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Joueur {
 
-    String Nom;
+    String Nom ;
     String Couleur;
     Jeton[] ListeJetons = new Jeton[21];
     int nombreJetonsRestants;
