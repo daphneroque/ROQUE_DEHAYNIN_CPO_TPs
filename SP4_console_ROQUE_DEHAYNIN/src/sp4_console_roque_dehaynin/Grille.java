@@ -193,15 +193,14 @@ public void tasserGrille (int ligne, int colone){
 }
 
 public boolean placerTrouNoir(int ligne , int colone ){ //demander au prof si ça fonctionne
-    
+    boolean trou=false;
     if (CellulesJeu[ligne][colone].trouNoir==false){
        CellulesJeu[ligne][colone].trouNoir=true;
-       return true;
+       trou = true;
     }
-    else{
-        return false;
-    }
+    return trou;
 }
+
 
 public boolean placerDesintegrateur(int ligne, int colone){
      if (CellulesJeu[ligne][colone].Desintegrateur==false){
