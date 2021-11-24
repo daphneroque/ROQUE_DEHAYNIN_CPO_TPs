@@ -34,7 +34,7 @@ public class Grille {
     public boolean etreRemplie() {
         boolean MaGrille=true;
         for (int j=0; j<7; j++){
-            if (CellulesJeu[5][j]== null){
+            if (CellulesJeu[5][j].jetonCourant== null){
                 MaGrille=false;
                 return MaGrille;
             }    
@@ -45,7 +45,7 @@ public class Grille {
     public void viderGrille(){
         for (int i=0; i<6; i++){
             for (int j=0; j<7; j++){
-                CellulesJeu[i][j]=null;
+                CellulesJeu[i][j].jetonCourant=null;
             }
         }
         
