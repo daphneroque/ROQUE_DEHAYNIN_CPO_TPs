@@ -32,6 +32,7 @@ public class Joueur {
         while (i < ListeJetons.length) {
             if (ListeJetons[i] == null) {
                 ListeJetons[i] = pion;
+                nombreJetonsRestants++;
                 return true;
             }
             if (ListeJetons[i] != null) {
