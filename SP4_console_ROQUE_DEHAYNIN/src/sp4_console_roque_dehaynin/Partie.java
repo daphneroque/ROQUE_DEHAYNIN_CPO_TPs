@@ -97,6 +97,7 @@ public class Partie {
         Joueur J2 = new Joueur(Joueur2);
         ListeJoueurs[0] = J1;
         ListeJoueurs[0] = J2;
+        
 
         //détermination du 1er joueur:
         double nbalea = Math.random();
@@ -115,7 +116,8 @@ public class Partie {
 
             //demander au joueur ce qu'il veut faire
             Scanner sc = new Scanner(System.in);
-            System.out.println("Que voulez-vous faire: /n1)Placer un jeton /n2)Récupérer un jeton /n3)Utiliser un désintégrateur");
+            System.out.println("vous avez " + joueurCourant.nombreDesintegrateurs + "desintegrateurs");
+            System.out.println("Que voulez-vous faire: /1)Placer un jeton /2)Récupérer un jeton /3)Utiliser un désintégrateur");
             int saisie = sc.nextInt();
             while (saisie > 3 || saisie <= 0) {
                 System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 3:");
@@ -137,6 +139,7 @@ public class Partie {
                 grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
                 joueurCourant.nombreJetonsRestants -= 1;
                  changerJoueur();
+                 
             }
 
             if (saisie == 2) {
@@ -157,6 +160,13 @@ public class Partie {
                 }
                 
                 // verifier que le jeton appartient bien au joueur
+                while(grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur){
+                    System.out.println("Erreur, vous n'avez pas selectionné votre jeton");
+                    
+            
+            
+                }
+                
                 joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] = grilleJeu.recupererJeton(ligne, colonne);
                 grilleJeu.tasserGrille(ligne, colonne);
                  changerJoueur();
@@ -179,7 +189,13 @@ public class Partie {
                     colonne = sca.nextInt() - 1;
                 }
                 joueurCourant.utiliserDesintegrateur();
-                // verifier la couleur de la cellulre, identique a celle du joueur
+                
+                // verifier la couleur de la cellule, identique a celle du joueur
+                
+               while(grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur){
+                    System.out.println("Erreur, la cellule n'est pas de votre couleur");
+               }
+                
                 grilleJeu.supprimerJeton(ligne, colonne);
                 grilleJeu.tasserGrille(ligne, colonne);
                 changerJoueur();
@@ -199,3 +215,7 @@ public class Partie {
         }
     }
 }
+
+
+/// a modifier : le nom des joueurs au début /indiquer quand on change de joueur/ indiquer bravo vous avez gagné/essaye de sortir de la boucle infinie
+        
