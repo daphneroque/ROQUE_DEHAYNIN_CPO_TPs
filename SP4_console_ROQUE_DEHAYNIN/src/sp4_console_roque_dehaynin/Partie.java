@@ -162,7 +162,13 @@ public class Partie {
                 // verifier que le jeton appartient bien au joueur
                 while(grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur){
                     System.out.println("Erreur, vous n'avez pas selectionné votre jeton");
-                    
+                               System.out.println("vous avez " + joueurCourant.nombreDesintegrateurs + "desintegrateurs");
+                    System.out.println("Que voulez-vous faire: /1)Placer un jeton /2)Récupérer un jeton /3)Utiliser un désintégrateur");
+                    saisie = sc.nextInt();
+                    while (saisie > 3 || saisie <= 0) {
+                    System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 3:");
+                    saisie = sc.nextInt();
+            }
             
             
                 }
