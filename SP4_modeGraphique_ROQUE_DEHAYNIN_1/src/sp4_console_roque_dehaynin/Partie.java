@@ -148,13 +148,13 @@ public class Partie {
                 System.out.println("Sélectionnez les coordonnéesdu jeton:");
                 System.out.println("Sélectionnez un numéro de ligne:");
                 int ligne = sca.nextInt() - 1;
-                while (ligne > 5 || ligne <= 0) {
+                while (ligne > 5 || ligne < 0) {
                     System.out.println("ERREUR: Veuillez ressaisir un numéro de ligne correct:");
                     ligne = sca.nextInt() - 1;
                 }
                 System.out.println("Sélectionnez un numéro de colone:");
                 int colonne = sca.nextInt() - 1;
-                while (colonne > 6 || colonne <= 0) {
+                while (colonne > 6 || colonne < 0) {
                     System.out.println("ERREUR: Veuillez ressaisir un numéro de colonne correct:");
                     colonne = sca.nextInt() - 1;
                 }
@@ -184,13 +184,13 @@ public class Partie {
                 System.out.println("Sélectionnez les coordonnées du jeton:");
                 System.out.println("Sélectionnez un numéro de ligne:");
                 int ligne = sca.nextInt() - 1;
-                while (ligne > 5 || ligne <= 0) {
+                while (ligne > 5 || ligne < 0) {
                     System.out.println("ERREUR:  un numéro de ligne incorrect:");
                     ligne = sca.nextInt() - 1;
                 }
                 System.out.println("Sélectionnez un numéro de colonne:");
                 int colonne = sca.nextInt() - 1;
-                while (colonne > 6 || colonne <= 0) {
+                while (colonne > 6 || colonne < 0) {
                     System.out.println("ERREUR: Veuillez ressaisir un numéro de colonne correct:");
                     colonne = sca.nextInt() - 1;
                 }
