@@ -20,6 +20,13 @@ public class fenetre extends javax.swing.JFrame {
         initComponents();
         panneau_info_joueur.setVisible(false);
         panneau_info_jeu.setVisible(false);
+        
+        for (int i=5; i>=0; i--){
+            for (int j=0; j<7; j++ ){
+                CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+                panneau_grille.add(cellGraph);
+            }
+        }
     }
 
     /**
