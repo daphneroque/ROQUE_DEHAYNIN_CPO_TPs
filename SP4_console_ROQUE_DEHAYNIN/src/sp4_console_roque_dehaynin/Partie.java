@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Partie {
 
     Joueur[] ListeJoueurs = new Joueur[2];
-    Joueur joueurCourant ;
+    Joueur joueurCourant;
     Grille grilleJeu;
 
     public Partie(Joueur j1, Joueur j2) {
@@ -55,9 +55,7 @@ public class Partie {
                     grilleJeu.placerTrouNoir(ligne, colone);
                 }
                 nbTN += 1;
-            } else {
-                nbTN = nbTN;
-            }
+            } 
         }
         int nbDesint = 0;
         while (nbDesint <= 3) {
@@ -70,7 +68,8 @@ public class Partie {
                 nbDesint = nbDesint;
             }
         }
-        for (int i = 0; i < 24; i++) {
+        // attribuer jetons aux joueurs
+        for (int i = 0; i < 21; i++) {
             if (ListeJoueurs[0].Couleur.equals("rouge")) {
                 Jeton jetonjoueurR = new Jeton("rouge");
                 ListeJoueurs[0].ajouterJeton(jetonjoueurR);
@@ -89,15 +88,14 @@ public class Partie {
     public void debuterPartie() {
         //inscription des 2 joueurs:
         Scanner sca = new Scanner(System.in);
-        System.out.println("Entrez le nom du premier joueur");
+        System.out.println("Entrez le nom du premier joueur ");
         String Joueur1 = sca.next();
-        System.out.println("Entrez le nom du second joueur");
+        System.out.println("Entrez le nom du second joueur ");
         String Joueur2 = sca.next();
         Joueur J1 = new Joueur(Joueur1);
         Joueur J2 = new Joueur(Joueur2);
         ListeJoueurs[0] = J1;
         ListeJoueurs[1] = J2;
-        
 
         //détermination du 1er joueur:
         double nbalea = Math.random();
@@ -118,7 +116,7 @@ public class Partie {
             //demander au joueur ce qu'il veut faire
             Scanner sc = new Scanner(System.in);
             System.out.println("vous avez " + joueurCourant.nombreDesintegrateurs + "desintegrateurs");
-            System.out.println(joueurCourant.Nom+" A vous de jouer ! ");
+            System.out.println(joueurCourant.Nom + " A vous de jouer ! ");
             System.out.println("Que voulez-vous faire: /1)Placer un jeton /2)Récupérer un jeton /3)Utiliser un désintégrateur");
             int saisie = sc.nextInt();
             while (saisie > 3 || saisie <= 0) {
@@ -128,7 +126,7 @@ public class Partie {
             if (saisie == 1) {
                 //placer un jeton dans une colonne
                 Scanner s = new Scanner(System.in);
-                
+
                 System.out.println("Sélectionnez un numéro de colone:");
                 int colonne = s.nextInt() - 1;
                 while (colonne > 7 || colonne < 0) {
@@ -141,8 +139,8 @@ public class Partie {
                 }
                 grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
                 joueurCourant.nombreJetonsRestants -= 1;
-                 changerJoueur();
-                 
+                changerJoueur();
+
             }
 
             if (saisie == 2) {
@@ -161,24 +159,23 @@ public class Partie {
                     System.out.println("ERREUR: Veuillez ressaisir un numéro de colonne correct:");
                     colonne = sca.nextInt() - 1;
                 }
-                
+
                 // verifier que le jeton appartient bien au joueur
-                while(grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur){
+                while (grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur) {
                     System.out.println("Erreur, vous n'avez pas selectionné votre jeton");
-                               System.out.println("vous avez " + joueurCourant.nombreDesintegrateurs + " desintegrateurs");
+                    System.out.println("vous avez " + joueurCourant.nombreDesintegrateurs + " desintegrateurs");
                     System.out.println("Que voulez-vous faire: /1)Placer un jeton /2)Récupérer un jeton /3)Utiliser un désintégrateur");
                     saisie = sc.nextInt();
                     while (saisie > 3 || saisie <= 0) {
-                    System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 3:");
-                    saisie = sc.nextInt();
-            }
-            
-            
+                        System.out.println("ERREUR: Veuillez ressaisir un choix compris entre 1 et 3:");
+                        saisie = sc.nextInt();
+                    }
+
                 }
-                
-                joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants-1] = grilleJeu.recupererJeton(ligne, colonne);
+
+                joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1] = grilleJeu.recupererJeton(ligne, colonne);
                 grilleJeu.tasserGrille(ligne, colonne);
-                 changerJoueur();
+                changerJoueur();
 
             }
 
@@ -198,13 +195,12 @@ public class Partie {
                     colonne = sca.nextInt() - 1;
                 }
                 joueurCourant.utiliserDesintegrateur();
-                
+
                 // verifier la couleur de la cellule, identique a celle du joueur
-                
-               while(grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur){
+                while (grilleJeu.CellulesJeu[ligne][colonne].lireCouleurDuJeton() != joueurCourant.Couleur) {
                     System.out.println("Erreur, la cellule n'est pas de votre couleur");
-               }
-                
+                }
+
                 grilleJeu.supprimerJeton(ligne, colonne);
                 grilleJeu.tasserGrille(ligne, colonne);
                 changerJoueur();
@@ -213,28 +209,27 @@ public class Partie {
             }
 
         }
-    if(grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0])==true){
-        System.out.println(ListeJoueurs[0].Nom+" a gagné !");
-    }
-    if(grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1])==true){
-        System.out.println(ListeJoueurs[1].Nom+" a gagné!");
-    }
-    if(grilleJeu.etreRemplie()==true){
-        System.out.println("La grille est pleine,aucun gagnant");
-    }
+        if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]) == true) {
+            System.out.println(ListeJoueurs[0].Nom + " a gagné !");
+        }
+        if (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]) == true) {
+            System.out.println(ListeJoueurs[1].Nom + " a gagné!");
+        }
+        if (grilleJeu.etreRemplie() == true) {
+            System.out.println("La grille est pleine,aucun gagnant");
+        }
 
     }
 
     void changerJoueur() {
         if (joueurCourant == ListeJoueurs[0]) {
             joueurCourant = ListeJoueurs[1];
-           
+
         } else {
             joueurCourant = ListeJoueurs[0];
         }
     }
 }
 
-
 /// a modifier : le nom des joueurs au début /indiquer quand on change de joueur/ indiquer bravo vous avez gagné/essaye de sortir de la boucle infinie
-        
+
