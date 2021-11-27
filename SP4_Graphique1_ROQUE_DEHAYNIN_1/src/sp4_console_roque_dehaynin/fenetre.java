@@ -4,6 +4,8 @@
  */
 package sp4_console_roque_dehaynin;
 
+import java.util.Scanner;
+
 /**
  *
  * @author daphn
@@ -91,14 +93,14 @@ public class fenetre extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nom joueur 1 : ");
         panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 20));
-        panneau_creation_partie.add(nom_joueur_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 90, 20));
+        panneau_creation_partie.add(nom_joueur_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 100, 30));
 
         nom_joueur_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nom_joueur_1ActionPerformed(evt);
             }
         });
-        panneau_creation_partie.add(nom_joueur_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 90, 20));
+        panneau_creation_partie.add(nom_joueur_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 100, 30));
 
         btn_start.setText("Démarrer Partie");
         btn_start.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +251,13 @@ public class fenetre extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_info_joueur.setVisible(true);
         panneau_info_jeu.setVisible(true);
+        initialiserPartie();
+        debuterPartie();
+        panneau_grille.repaint();
+        btn_start.setEnabled(false);//desactive le bouton
+        
+        
+        
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
@@ -286,6 +295,103 @@ public class fenetre extends javax.swing.JFrame {
         });
     }
 
+    public void attribuerCouleursAuxJoueurs() {
+        double nbalea = Math.random();
+        if (nbalea > 0.5) {
+            ListeJoueurs[0].affecterCouleur("rouge");
+            ListeJoueurs[1].affecterCouleur("jaune");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur JAUNE");
+        } else {
+            ListeJoueurs[0].affecterCouleur("jaune");
+            ListeJoueurs[1].affecterCouleur("rouge");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur JAUNE");
+        }
+
+    }
+
+    public void initialiserPartie() {
+        //Création de la grilleJeu
+        grilleJeu = new Grille();
+        grilleJeu.viderGrille();
+        int nbTN = 0;
+        while (nbTN <= 5) {
+            int ligne = (int) (Math.random() * 6);
+            int colone = (int) (Math.random() * 7);
+            if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null) {
+                if (nbTN == 4 || nbTN == 5) {
+                    grilleJeu.placerTrouNoir(ligne, colone);
+                    grilleJeu.placerDesintegrateur(ligne, colone);
+                } else {
+                    grilleJeu.placerTrouNoir(ligne, colone);
+                }
+                nbTN += 1;
+            } else {
+                nbTN = nbTN;
+            }
+        }
+        int nbDesint = 0;
+        while (nbDesint <= 3) {
+            int ligne = (int) (Math.random() * 6);
+            int colone = (int) (Math.random() * 7);
+            if (grilleJeu.CellulesJeu[ligne][colone].presenceDesintegrateur() == false) {
+                grilleJeu.placerDesintegrateur(ligne, colone);
+                nbDesint += 1;
+            } else {
+                nbDesint = nbDesint;
+            }
+        }
+        for (int i = 0; i < 21; i++) {
+
+         ListeJoueurs[0].ajouterJeton(new Jeton(ListeJoueurs[0].Couleur));
+         ListeJoueurs[1].ajouterJeton(new Jeton(ListeJoueurs[1].Couleur));
+         
+        }
+
+    }
+
+    public void debuterPartie() {
+        //inscription des 2 joueurs:
+        
+        String nomJoueur1= nom_joueur_1.getText();
+        String nomJoueur2= nom_joueur_2.getText();
+        
+       
+        Joueur J1 = new Joueur(nomJoueur1);
+        Joueur J2 = new Joueur(nomJoueur2);
+        ListeJoueurs[0] = J1;
+        ListeJoueurs[1] = J2;
+        
+
+        //détermination du 1er joueur:
+        double nbalea = Math.random();
+        if (nbalea > 0.5) {
+            joueurCourant = ListeJoueurs[0];
+        } else {
+            joueurCourant = ListeJoueurs[1];
+        }
+        lbl_jcourant.setText(joueurCourant.Nom);
+
+        //Distribution des couleurs:
+        attribuerCouleursAuxJoueurs();
+        lbl_j1_nom.setText(nomJoueur1);
+        lbl_j2_nom2.setText(nomJoueur2);
+        lbl_j1_couleur.setText(J1.Couleur);
+        lbl_j2_couleur1.setText(J2.Couleur);
+        lbl_j1_desint.setText(J1.nombreDesintegrateurs+"");
+        lbl_j2_desint1.setText(J2.nombreDesintegrateurs+"");
+        
+        initialiserPartie();
+        while ((grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]) != true) && (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]) != true) && (grilleJeu.etreRemplie() != true)) {
+            //afficher la grilleJeu
+            
+        }
+        
+    }
+    
+
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
     private javax.swing.JButton btn_col_1;

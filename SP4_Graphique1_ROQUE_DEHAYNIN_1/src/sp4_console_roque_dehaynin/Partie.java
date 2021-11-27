@@ -28,13 +28,13 @@ public class Partie {
         if (nbalea > 0.5) {
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
-            System.out.println(ListeJoueurs[0] + " a la couleur ROUGE");
-            System.out.println(ListeJoueurs[1] + " a la couleur JAUNE");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur JAUNE");
         } else {
             ListeJoueurs[0].affecterCouleur("jaune");
             ListeJoueurs[1].affecterCouleur("rouge");
-            System.out.println(ListeJoueurs[1] + " a la couleur ROUGE");
-            System.out.println(ListeJoueurs[0] + " a la couleur JAUNE");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur JAUNE");
         }
 
     }
@@ -44,7 +44,7 @@ public class Partie {
         grilleJeu = new Grille();
         grilleJeu.viderGrille();
         int nbTN = 0;
-        while (nbTN <= 5) {
+        while (nbTN < 5) {
             int ligne = (int) (Math.random() * 6);
             int colone = (int) (Math.random() * 7);
             if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null) {
@@ -96,7 +96,7 @@ public class Partie {
         Joueur J1 = new Joueur(Joueur1);
         Joueur J2 = new Joueur(Joueur2);
         ListeJoueurs[0] = J1;
-        ListeJoueurs[0] = J2;
+        ListeJoueurs[1] = J2;
         
 
         //détermination du 1er joueur:
