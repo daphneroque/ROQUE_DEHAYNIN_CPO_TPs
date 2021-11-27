@@ -55,7 +55,8 @@ public class Grille {
         for (int i=5; i>=0; i--){ // comme la grille affiche la premiere ligne, et que la ligne du haut est 5, on doit changer le sens pour l'affichage
             for (int j=0; j<7; j++){
                 if ((CellulesJeu[i][j].lireCouleurDuJeton()== "vide")&&
-                        CellulesJeu[i][j].trouNoir == false){
+                        CellulesJeu[i][j].trouNoir == false &&
+                        CellulesJeu[i][j].Desintegrateur == false)  {
                     System.out.print("_ ");
                 }
                 if (CellulesJeu[i][j].lireCouleurDuJeton()== "rouge"){ 
@@ -68,6 +69,9 @@ public class Grille {
                 }
                 if(CellulesJeu[i][j].trouNoir == true) {
                     System.out.print(" O");
+                }
+                if((CellulesJeu[i][j].Desintegrateur == true && CellulesJeu[i][j].trouNoir==false )) {
+                    System.out.print(" D");
                 }
                 
             

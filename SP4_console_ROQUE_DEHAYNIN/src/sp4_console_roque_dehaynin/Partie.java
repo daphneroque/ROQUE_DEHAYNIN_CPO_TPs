@@ -47,7 +47,8 @@ public class Partie {
         while (nbTN < 5) {
             int ligne = (int) (Math.random() * 6);
             int colone = (int) (Math.random() * 7);
-            if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null) {
+            if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null &&
+                 grilleJeu.CellulesJeu[ligne][colone].trouNoir == false )  {
                 if (nbTN == 3 || nbTN == 4) {
                     grilleJeu.placerTrouNoir(ligne, colone);
                     grilleJeu.placerDesintegrateur(ligne, colone);
@@ -58,15 +59,13 @@ public class Partie {
             } 
         }
         int nbDesint = 0;
-        while (nbDesint <= 3) {
+        while (nbDesint < 3) {
             int ligne = (int) (Math.random() * 6);
             int colone = (int) (Math.random() * 7);
             if (grilleJeu.CellulesJeu[ligne][colone].presenceDesintegrateur() == false) {
                 grilleJeu.placerDesintegrateur(ligne, colone);
                 nbDesint += 1;
-            } else {
-                nbDesint = nbDesint;
-            }
+            } 
         }
         // attribuer jetons aux joueurs
         for (int i = 0; i < 21; i++) {
@@ -137,6 +136,7 @@ public class Partie {
                     System.out.println("ERREUR: La colonne est remplie, veuillez en choisir une autre:");
                     colonne = s.nextInt() - 1;
                 }
+                // if jeton sur trou noir -> supprimer jeton
                 grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
                 joueurCourant.nombreJetonsRestants -= 1;
                 changerJoueur();
