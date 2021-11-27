@@ -15,7 +15,7 @@ public class Partie {
 
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurCourant ;
-    Grille grilleJeu;
+    Grille grilleJeu; 
 
     public Partie(Joueur j1, Joueur j2) {
         ListeJoueurs[0] = j1;

@@ -11,7 +11,7 @@ package sp4_console_roque_dehaynin;
 public class fenetre extends javax.swing.JFrame {
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurCourant ;
-    Grille grilleJeu;
+    Grille grilleJeu = new Grille();
 
     /**
      * Creates new form fenetre
