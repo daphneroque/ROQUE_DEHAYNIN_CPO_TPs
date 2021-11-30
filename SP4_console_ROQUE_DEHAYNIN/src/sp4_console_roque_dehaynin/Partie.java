@@ -47,8 +47,8 @@ public class Partie {
         while (nbTN < 5) {
             int ligne = (int) (Math.random() * 6);
             int colone = (int) (Math.random() * 7);
-            if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null &&
-                 grilleJeu.CellulesJeu[ligne][colone].trouNoir == false )  {
+            if (grilleJeu.CellulesJeu[ligne][colone].jetonCourant == null
+                    && grilleJeu.CellulesJeu[ligne][colone].trouNoir == false) {
                 if (nbTN == 3 || nbTN == 4) {
                     grilleJeu.placerTrouNoir(ligne, colone);
                     grilleJeu.placerDesintegrateur(ligne, colone);
@@ -56,7 +56,7 @@ public class Partie {
                     grilleJeu.placerTrouNoir(ligne, colone);
                 }
                 nbTN += 1;
-            } 
+            }
         }
         int nbDesint = 0;
         while (nbDesint < 3) {
@@ -65,7 +65,7 @@ public class Partie {
             if (grilleJeu.CellulesJeu[ligne][colone].presenceDesintegrateur() == false) {
                 grilleJeu.placerDesintegrateur(ligne, colone);
                 nbDesint += 1;
-            } 
+            }
         }
         // attribuer jetons aux joueurs
         for (int i = 0; i < 21; i++) {
@@ -82,6 +82,15 @@ public class Partie {
             }
         }
 
+    }
+
+    void changerJoueur() {
+        if (joueurCourant == ListeJoueurs[0]) {
+            joueurCourant = ListeJoueurs[1];
+
+        } else {
+            joueurCourant = ListeJoueurs[0];
+        }
     }
 
     public void debuterPartie() {
@@ -136,11 +145,21 @@ public class Partie {
                     System.out.println("ERREUR: La colonne est remplie, veuillez en choisir une autre:");
                     colonne = s.nextInt() - 1;
                 }
-                // if jeton sur trou noir -> supprimer jeton
-                grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
-                joueurCourant.nombreJetonsRestants -= 1;
-                changerJoueur();
 
+                int i = 0;
+
+                while (grilleJeu.CellulesJeu[i][colonne].jetonCourant == null ) {
+                    i++;
+                }
+                if (grilleJeu.CellulesJeu[i][colonne].presenceTrouNoir() == true) {
+                    grilleJeu.CellulesJeu[i][colonne].activerTrouNoir();
+
+                    // if jeton sur trou noir -> supprimer jeton
+                    grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
+                    joueurCourant.nombreJetonsRestants -= 1;
+                    changerJoueur();
+
+                }
             }
 
             if (saisie == 2) {
@@ -220,16 +239,4 @@ public class Partie {
         }
 
     }
-
-    void changerJoueur() {
-        if (joueurCourant == ListeJoueurs[0]) {
-            joueurCourant = ListeJoueurs[1];
-
-        } else {
-            joueurCourant = ListeJoueurs[0];
-        }
-    }
 }
-
-/// a modifier : le nom des joueurs au début /indiquer quand on change de joueur/ indiquer bravo vous avez gagné/essaye de sortir de la boucle infinie
-
