@@ -108,7 +108,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){ // renvoie vrai si la
         int Compt = 0; // on initialise notre variable compteur 
         String CouleurGagnante = personnageG.Couleur;
 
-        for (int i=0; i<6; i++) {  
+        for (int i=0; i<6; i++) {  // cas 1 gagnant dans la colonne
             for (int j=0; j<4; j++){  //parcours seulement 4 colonnes car il en faut 4 pour gagner
             Compt=0;
             String CouleurCase = lireCouleurDuJeton(i,j); // creation d'une variable qui va lire la couleur du jeton de la cellule
@@ -126,7 +126,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){ // renvoie vrai si la
             } 
         }
 
-        for (int i=0; i<3; i++) { 
+        for (int i=0; i<3; i++) {  // gagnant dans la ligne
             for (int j=0; j<7; j++){ 
                 Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
@@ -146,7 +146,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){ // renvoie vrai si la
         }
 
         
-        for (int i=0; i<3; i++) { 
+        for (int i=0; i<3; i++) { // en diagonal ligne 0;2
             for (int j=0; j<4; j++){  
                 Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
@@ -172,7 +172,7 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){ // renvoie vrai si la
 
  
         
-        for (int i=3; i<6; i++) { 
+        for (int i=3; i<6; i++) { // en diagonal ligne 3;5
             for (int j=0; j<4; j++){  
                 Compt=0;
             String Couleurcellule = lireCouleurDuJeton(i,j);
@@ -198,21 +198,21 @@ public boolean etreGagnantePourJoueur(Joueur personnageG){ // renvoie vrai si la
     }
   
 
-boolean colonneRemplie (int colonne){
-        return CellulesJeu[5][colonne].jetonCourant!=null ;  
+boolean colonneRemplie (int colonne){ // on vérifie si les colonnes sont remplies 
+        return CellulesJeu[5][colonne].jetonCourant!=null ;  // 5 car il suffit de regarder si la derniere ligne est remplie
 }
 
-public void tasserGrille (int ligne, int colone){
+public void tasserGrille (int ligne, int colone){ // on tass la ligne
     for(int i=0; i<ligne; i++ ){
-    CellulesJeu[i+1][colone].jetonCourant=CellulesJeu[i][colone].jetonCourant;
-        CellulesJeu[i][colone].jetonCourant = null;
+    CellulesJeu[i+1][colone].jetonCourant=CellulesJeu[i][colone].jetonCourant; // si le jeton est detruie on deplace la ligne de une rangée
+        CellulesJeu[i][colone].jetonCourant = null; // l'ancienne  cellule devient nulle
     }
     
 }
 
-public boolean placerTrouNoir(int ligne , int colone ){ //demander au prof si ça fonctionne
+public boolean placerTrouNoir(int ligne , int colone ){ //ajoute un trou noir à l’endroit indiqué
     boolean trou=false;
-    if (CellulesJeu[ligne][colone].trouNoir==false){
+    if (CellulesJeu[ligne][colone].trouNoir==false){ // il y a deja un trou noir
        CellulesJeu[ligne][colone].trouNoir=true;
        trou = true;
     }
@@ -220,7 +220,7 @@ public boolean placerTrouNoir(int ligne , int colone ){ //demander au prof si ç
 }
 
 
-public boolean placerDesintegrateur(int ligne, int colone){
+public boolean placerDesintegrateur(int ligne, int colone){ //ajoute un désintégrateur à l’endroit indiqué
      if (CellulesJeu[ligne][colone].Desintegrateur==false){
        CellulesJeu[ligne][colone].Desintegrateur=true;
        return true;
