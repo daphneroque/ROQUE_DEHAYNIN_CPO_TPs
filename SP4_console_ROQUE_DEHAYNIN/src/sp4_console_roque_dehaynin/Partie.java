@@ -242,3 +242,7 @@ public class Partie { //on crée notre attribut
 
     }
 }
+
+// au niveau de l'interface, on a eu des soucis 
+// l'interface la plus complète que l'on peut pas ouvir mais ou on peut voir le code sur github esr l'interface gaphique 1
+// L'interface que l'on vient de recommancer mais qu'on ne pourra pas finir avant 00h mais que l'on peut ouvrir 
