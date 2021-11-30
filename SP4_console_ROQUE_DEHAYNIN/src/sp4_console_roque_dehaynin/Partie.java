@@ -11,20 +11,20 @@ import java.util.Scanner;
  *
  * @author daphn
  */
-public class Partie {
+public class Partie { //on crée notre attribut
 
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu;
 
-    public Partie(Joueur j1, Joueur j2) {
+    public Partie(Joueur j1, Joueur j2) { // création de nos deux constructeurs joueurs 
         ListeJoueurs[0] = j1;
         ListeJoueurs[1] = j2;
 
     }
 
-    public void attribuerCouleursAuxJoueurs() {
-        double nb = Math.random();
+    public void attribuerCouleursAuxJoueurs() { // atribue aléatoirement une couleur a chaque joueur
+        double nb = Math.random();// permet aleatoire
         if (nb > 0.5) {
             ListeJoueurs[0].affecterCouleur("rouge");
             ListeJoueurs[1].affecterCouleur("jaune");
@@ -40,7 +40,7 @@ public class Partie {
     }
 
     public void initialiserPartie() {
-        //Création de la grilleJeu
+        //Création de la grilleJeu avec les TN et avec les D dont certains caché derrier TN
         grilleJeu = new Grille();
         grilleJeu.viderGrille();
         int nbTrouNoir = 0;
@@ -84,7 +84,7 @@ public class Partie {
 
     }
 
-    void changerJoueur() {
+    void changerJoueur() { // permet de changer de joueur a chaque tour 
         if (joueurCourant == ListeJoueurs[0]) {
             joueurCourant = ListeJoueurs[1];
 
