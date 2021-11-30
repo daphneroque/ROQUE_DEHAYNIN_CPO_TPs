@@ -148,18 +148,20 @@ public class Partie {
 
                 int i = 0;
 
-                while (grilleJeu.CellulesJeu[i][colonne].jetonCourant == null ) {
+                while (grilleJeu.CellulesJeu[i][colonne].jetonCourant != null ) {
                     i++;
                 }
-                if (grilleJeu.CellulesJeu[i][colonne].presenceTrouNoir() == true) {
-                    grilleJeu.CellulesJeu[i][colonne].activerTrouNoir();
-
                     // if jeton sur trou noir -> supprimer jeton
                     grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants - 1], colonne);
                     joueurCourant.nombreJetonsRestants -= 1;
-                    changerJoueur();
+                 
+                if (grilleJeu.CellulesJeu[i][colonne].presenceTrouNoir() == true) {
+                    grilleJeu.CellulesJeu[i][colonne].activerTrouNoir();
+
+                
 
                 }
+                   changerJoueur();
             }
 
             if (saisie == 2) {
