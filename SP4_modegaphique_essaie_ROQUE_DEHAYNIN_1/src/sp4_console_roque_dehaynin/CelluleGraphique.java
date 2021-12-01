@@ -4,6 +4,8 @@
  */
 package sp4_console_roque_dehaynin;
 
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -14,11 +16,17 @@ public class CelluleGraphique extends JButton{
     
     Cellule celluleAssociee;
     
+    ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/images/celluleVide.png"));
     
     
     public CelluleGraphique (Cellule uneCellule){
         celluleAssociee = uneCellule;
     }
     
+    @Override //metode paint component
+    public void paintComponent (Graphics G){
+        super.paintComponent(G);
+        setIcon(img_vide); //on attribue image cellule vide
+    }
     
 }

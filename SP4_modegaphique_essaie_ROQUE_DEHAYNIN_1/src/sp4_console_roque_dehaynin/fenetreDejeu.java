@@ -11,7 +11,7 @@ package sp4_console_roque_dehaynin;
 public class fenetreDejeu extends javax.swing.JFrame {
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurCourant;
-    Grille grilleJeu; //attributs classe partie
+    Grille grilleJeu = new Grille();//attributs classe partie
     /**
      * Creates new form fenetreDejeu
      */
@@ -284,6 +284,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_info_joueur.setVisible(true);
         panneau_info_jeu.setVisible(true);
+        
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
