@@ -9,12 +9,24 @@ package sp4_console_roque_dehaynin;
  * @author daphn
  */
 public class fenetreDejeu extends javax.swing.JFrame {
-
+    Joueur[] ListeJoueurs = new Joueur[2];
+    Joueur joueurCourant;
+    Grille grilleJeu; //attributs classe partie
     /**
      * Creates new form fenetreDejeu
      */
     public fenetreDejeu() {
         initComponents();
+        panneau_info_joueur.setVisible(false);
+        panneau_info_jeu.setVisible(false);// cache les panneaux
+        
+        for(int i=5; i>=0; i--){
+            for(int j=0 ; j<7; j++){
+                CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+                panneau_grille.add(cellGraph);
+                
+            }
+        }
     }
 
     /**
@@ -59,7 +71,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
         btn_col_5 = new javax.swing.JButton();
         btn_col_6 = new javax.swing.JButton();
         btn_col_3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panneau_info_jeu = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lbl_jcourant = new javax.swing.JLabel();
@@ -77,7 +89,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
         panneau_creation_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nom joueur 2");
-        panneau_creation_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 70, 20));
+        panneau_creation_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 90, 20));
 
         jLabel2.setText("Nom joueur 1");
         panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 20));
@@ -85,6 +97,11 @@ public class fenetreDejeu extends javax.swing.JFrame {
         panneau_creation_partie.add(nom_joueur_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 110, -1));
 
         btn_start.setText("Démarrer Partie");
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 130, 30));
 
         getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 310, 120));
@@ -192,10 +209,10 @@ public class fenetreDejeu extends javax.swing.JFrame {
         });
         getContentPane().add(btn_col_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 40, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        panneau_info_jeu.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel13.setText("infos joueurs");
+        jLabel13.setText("infos jeu");
 
         jLabel6.setText("joueurs courant :");
 
@@ -205,33 +222,33 @@ public class fenetreDejeu extends javax.swing.JFrame {
         message.setRows(5);
         jScrollPane1.setViewportView(message);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panneau_info_jeuLayout = new javax.swing.GroupLayout(panneau_info_jeu);
+        panneau_info_jeu.setLayout(panneau_info_jeuLayout);
+        panneau_info_jeuLayout.setHorizontalGroup(
+            panneau_info_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneau_info_jeuLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panneau_info_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panneau_info_jeuLayout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panneau_info_jeuLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_jcourant, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panneau_info_jeuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 23, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panneau_info_jeuLayout.setVerticalGroup(
+            panneau_info_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneau_info_jeuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panneau_info_jeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lbl_jcourant))
                 .addGap(18, 18, 18)
@@ -239,7 +256,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 300, 140));
+        getContentPane().add(panneau_info_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 300, 140));
 
         setBounds(0, 0, 1045, 702);
     }// </editor-fold>//GEN-END:initComponents
@@ -263,6 +280,11 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_col_3ActionPerformed
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        panneau_info_joueur.setVisible(true);
+        panneau_info_jeu.setVisible(true);
+    }//GEN-LAST:event_btn_startActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,7 +344,6 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_j1_couleur;
@@ -337,6 +358,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private javax.swing.JTextField nom_joueur_2;
     private javax.swing.JPanel panneau_creation_partie;
     private javax.swing.JPanel panneau_grille;
+    private javax.swing.JPanel panneau_info_jeu;
     private javax.swing.JPanel panneau_info_joueur;
     private javax.swing.JPanel panneau_info_partie;
     // End of variables declaration//GEN-END:variables
