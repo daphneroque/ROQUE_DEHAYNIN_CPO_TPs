@@ -17,6 +17,11 @@ public class CelluleGraphique extends JButton{
     Cellule celluleAssociee;
     
     ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/images/celluleVide.png"));
+    ImageIcon img_desint = new javax.swing.ImageIcon(getClass().getResource("/images/desintegrateur.png"));
+    ImageIcon img_jetonJaune = new javax.swing.ImageIcon(getClass().getResource("/images/jetonJaune.png"));
+    ImageIcon img_jetonRouge = new javax.swing.ImageIcon(getClass().getResource("/images/jetonRouge.png"));
+    ImageIcon img_trouNoir = new javax.swing.ImageIcon(getClass().getResource("/images/trouNoir.png"));
+    
     
     
     public CelluleGraphique (Cellule uneCellule){
@@ -26,7 +31,29 @@ public class CelluleGraphique extends JButton{
     @Override //metode paint component
     public void paintComponent (Graphics G){
         super.paintComponent(G);
-        setIcon(img_vide); //on attribue image cellule vide
+        if (celluleAssociee.presenceTrouNoir()==true){
+            setIcon(img_trouNoir);
+        }
+        else if (celluleAssociee.presenceDesintegrateur()==true){
+            setIcon(img_desint);
+        }
+        else{
+            String couleur_jeton = celluleAssociee.lireCouleurDuJeton();
+            switch(couleur_jeton){
+                case "vide" :
+                    setIcon(img_vide);
+                    break;
+                case "rouge" : 
+                    setIcon(img_jetonRouge);
+                    break;
+                case  "jaune" :
+                        
+                setIcon(img_jetonJaune);
+                    break;
+                    
+            }
+        }
+        
     }
     
 }

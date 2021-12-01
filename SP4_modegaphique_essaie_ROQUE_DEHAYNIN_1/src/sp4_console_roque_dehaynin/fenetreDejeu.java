@@ -4,14 +4,18 @@
  */
 package sp4_console_roque_dehaynin;
 
+import java.util.Scanner;
+
 /**
  *
  * @author daphn
  */
 public class fenetreDejeu extends javax.swing.JFrame {
+
     Joueur[] ListeJoueurs = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu = new Grille();//attributs classe partie
+
     /**
      * Creates new form fenetreDejeu
      */
@@ -19,12 +23,12 @@ public class fenetreDejeu extends javax.swing.JFrame {
         initComponents();
         panneau_info_joueur.setVisible(false);
         panneau_info_jeu.setVisible(false);// cache les panneaux
-        
-        for(int i=5; i>=0; i--){
-            for(int j=0 ; j<7; j++){
+
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
                 CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
                 panneau_grille.add(cellGraph);
-                
+
             }
         }
     }
@@ -284,7 +288,10 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_info_joueur.setVisible(true);
         panneau_info_jeu.setVisible(true);
-        
+        debuterPartie();
+        initialiserPartie();
+
+
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
@@ -320,6 +327,107 @@ public class fenetreDejeu extends javax.swing.JFrame {
                 new fenetreDejeu().setVisible(true);
             }
         });
+    }
+
+    public void attribuerCouleursAuxJoueurs() {
+        double nb = Math.random();
+        if (nb > 0.5) {
+            ListeJoueurs[0].affecterCouleur("rouge");
+            ListeJoueurs[1].affecterCouleur("jaune");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur JAUNE");
+        } else {
+            ListeJoueurs[0].affecterCouleur("jaune");
+            ListeJoueurs[1].affecterCouleur("rouge");
+            System.out.println(ListeJoueurs[1].Nom + " a la couleur ROUGE");
+            System.out.println(ListeJoueurs[0].Nom + " a la couleur JAUNE");
+        }
+
+    }
+
+    public void initialiserPartie() {
+        //Création de la grilleJeu
+        grilleJeu = new Grille();
+        grilleJeu.viderGrille();
+        int nbTrouNoir = 0;
+        while (nbTrouNoir < 5) {
+            int ligne = (int) (Math.random() * 6);
+            int colonne = (int) (Math.random() * 7);
+            if (grilleJeu.CellulesJeu[ligne][colonne].jetonCourant == null
+                    && grilleJeu.CellulesJeu[ligne][colonne].trouNoir == false) {
+                if (nbTrouNoir == 3 || nbTrouNoir == 4) {
+                    grilleJeu.placerTrouNoir(ligne, colonne);
+                    grilleJeu.placerDesintegrateur(ligne, colonne);
+                } else {
+                    grilleJeu.placerTrouNoir(ligne, colonne);
+                }
+                nbTrouNoir += 1;
+            }
+        }
+        int nbDesint = 0;
+        while (nbDesint < 3) {
+            int ligne = (int) (Math.random() * 6);
+            int colonne = (int) (Math.random() * 7);
+            if (grilleJeu.CellulesJeu[ligne][colonne].presenceDesintegrateur() == false) {
+                grilleJeu.placerDesintegrateur(ligne, colonne);
+                nbDesint += 1;
+            }
+        }
+        // attribuer jetons aux joueurs
+        for (int i = 0; i < 21; i++) {
+            if (ListeJoueurs[0].Couleur.equals("rouge")) {
+                Jeton jetonjoueurRouge = new Jeton("rouge");
+                ListeJoueurs[0].ajouterJeton(jetonjoueurRouge);
+                Jeton jetonjoueurJaune = new Jeton("jaune");
+                ListeJoueurs[1].ajouterJeton(jetonjoueurJaune);
+            } else {
+                Jeton jetonjoueurRouge = new Jeton("rouge");
+                ListeJoueurs[1].ajouterJeton(jetonjoueurRouge);
+                Jeton jetonjoueurJaune = new Jeton("jaune");
+                ListeJoueurs[0].ajouterJeton(jetonjoueurJaune);
+            }
+        }
+
+    }
+
+    void changerJoueur() {
+        if (joueurCourant == ListeJoueurs[0]) {
+            joueurCourant = ListeJoueurs[1];
+
+        } else {
+            joueurCourant = ListeJoueurs[0];
+        }
+    }
+
+    public void debuterPartie() {
+        //inscription des 2 joueurs:
+       
+        
+        String nomJoueur1 = nom_joueur_1.getText();
+        String nomJoueur2 = nom_joueur_2.getText();
+        
+        
+        Joueur J1 = new Joueur(nomJoueur1);
+        Joueur J2 = new Joueur(nomJoueur2);
+        ListeJoueurs[0] = J1;
+        ListeJoueurs[1] = J2;
+
+        //détermination du 1er joueur:
+        double nb = Math.random();
+        if (nb > 0.5) {
+            joueurCourant = ListeJoueurs[0];
+        } else {
+            joueurCourant = ListeJoueurs[1];
+        }
+
+        //Distribution des couleurs:
+        attribuerCouleursAuxJoueurs();
+
+        initialiserPartie();
+        while ((grilleJeu.etreGagnantePourJoueur(ListeJoueurs[0]) != true) && (grilleJeu.etreGagnantePourJoueur(ListeJoueurs[1]) != true) && (grilleJeu.etreRemplie() != true)) {
+            //afficher la grilleJeu
+            grilleJeu.afficherGrilleSurConsole();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
